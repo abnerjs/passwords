@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
 import { ModalController } from '@ionic/angular';
-import { ModalFormPage } from '../modal-form/modal-form.page';
 
 interface Senha {
   id: number;
@@ -10,16 +9,17 @@ interface Senha {
   senha: string;
 }
 
+
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-modal-form',
+  templateUrl: './modal-form.page.html',
+  styleUrls: ['./modal-form.page.scss'],
 })
-export class HomePage {
+export class ModalFormPage implements OnInit {
   public senha: Senha = {} as any;
   public senhas: Senha[] = [];
 
-  constructor(private storage: StorageService, public modalController: ModalController) {
+  constructor(private storage: StorageService) {
     this.storage.recuperar('senhas').then((data: any) => {
       if (data != null) {
         this.senhas = data;
@@ -29,11 +29,7 @@ export class HomePage {
     });
   }
 
-  async openModal() {
-    const modalForm = await this.modalController.create({
-      component: ModalFormPage
-    });
-    return await modalForm.present();
+  ngOnInit() {
   }
 
   adicionar() {
@@ -50,5 +46,5 @@ export class HomePage {
       return item.id !== id;
     });
   }
-}
 
+}

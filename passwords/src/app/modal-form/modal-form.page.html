@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Digite os dados</ion-title>
+    <ion-buttons slot="end">
+      <ion-button onclick="dismissModal()">
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <span ion-text color="primary" showWhen="ios"></span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="senha.nome" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Login</ion-label>
+      <ion-input [(ngModel)]="senha.login" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="senha.senha" ></ion-input>
+    </ion-item>
+
+    <ion-button vertical='bottom' expand="block" (click)="adicionar()">Adicionar</ion-button>
+  </ion-list>
+</ion-content>
