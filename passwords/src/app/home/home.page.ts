@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService } from '../service/storage.service';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 interface Senha {
   id: number;
