@@ -35,7 +35,7 @@
 
   <script>
     const searchbar = document.querySelector('ion-searchbar > div .searchable-items');
-    const items = Array.from(document.querySelector('ion-list').children);
+    const items = Array.from(document.querySelector("body > app-root > ion-app > ion-router-outlet > app-home > ion-content > div > div").children);
 
     searchbar.addEventListener('ionInput', handleInput);
 
@@ -43,7 +43,7 @@
       const query = event.target.value.toLowerCase();
       requestAnimationFrame(() => {
         items.forEach(item => {
-          const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+          const shouldShow = item.children[0].children[0].textContent.toLowerCase().indexOf(query) > -1;
           item.style.display = shouldShow ? 'block' : 'none';
         });
       });

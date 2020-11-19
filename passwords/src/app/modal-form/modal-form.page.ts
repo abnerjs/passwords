@@ -19,7 +19,7 @@ export class ModalFormPage implements OnInit {
   public senha: Senha = {} as any;
   public senhas: Senha[] = [];
 
-  constructor(private storage: StorageService) {
+  constructor(private storage: StorageService, public modalForm: ModalController) {
     this.storage.recuperar('senhas').then((data: any) => {
       if (data != null) {
         this.senhas = data;
@@ -32,6 +32,10 @@ export class ModalFormPage implements OnInit {
   ngOnInit() {
   }
 
+  dismissModal() {
+    this.modalForm.dismiss();
+  }
+
   adicionar() {
     this.senha.id = new Date().getTime();
     this.senhas.push(this.senha);
@@ -39,6 +43,7 @@ export class ModalFormPage implements OnInit {
     this.senha = {} as any;
 
     this.storage.armazenar('senhas', this.senhas);
+    this.dismissModal();
   }
 
   excluir(id: number) {
